@@ -12,9 +12,10 @@ from nltk.stem.lancaster import LancasterStemmer
 stemmer = LancasterStemmer()
 nltk.download('punkt')
 
-ERROR_THRESHOLD = 0.25
+ERROR_THRESHOLD = 0.75
+context =  {}
 class Prediction:
-    # This class is mainly used to predict the answer from user's question. 
+    # This class is mainly used to predict the answer from user's question.
     # It need below informations:
     # - data.pickle file which store all preprocessing data from training step
     # - input file or intent file (its name is stored as part of data.pickle file)
@@ -29,7 +30,7 @@ class Prediction:
 
         with open(self.input_file) as file:
             self.data = json.load(file)
-        
+
         tensorflow.reset_default_graph()
         tflearn.init_graph(num_cores=1)
 
@@ -47,12 +48,11 @@ class Prediction:
         self.labels = []
         self.docs_x = []
         self.docs_y = []
-        self.context =  {}
         try:
             self.load_model()
         except Exception as e:
             print('Failed to load model, please train it first. Error {}'.format(e))
-    
+
     def bag_of_words(self, s):
         bag = [0 for _ in range(len(self.words))]
 
@@ -64,14 +64,14 @@ class Prediction:
             for i, w in enumerate(self.words):
                 if w == se:
                     bag[i] = 1
-                
+
         return numpy.array(bag)
 
     def classify(self, sentence):
         # generate probabilities from the model
         results = self.model.predict([self.bag_of_words(sentence)])[0]
         # filter out predictions below a threshold
-        results = [[i,r] for i,r in enumerate(results) if r>ERROR_THRESHOLD]
+        results = [[i,r] for i,r in enumerate(results) if r>=ERROR_THRESHOLD]
         # sort by strength of probability
         results.sort(key=lambda x: x[1], reverse=True)
         return_list = []
@@ -92,11 +92,10 @@ class Prediction:
                         # set context for this intent if necessary
                         if 'context_set' in i:
                             if show_details: print ('context:', i['context_set'])
-                            self.context[userID] = i['context_set']
-                        print (self.context)
+                            context[userID] = i['context_set']
                         # check if this intent is contextual and applies to this user's conversation
                         if not 'context_filter' in i or \
-                            (userID in self.context and 'context_filter' in i and i['context_filter'] == self.context[userID]):
+                            (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
                             if show_details: print ('tag:', i['tag'])
                             # a random response from the intent
                             return random.choice(i['responses'])

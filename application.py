@@ -26,7 +26,7 @@ def webhook():
     except NameError:
         ml_prediction = Prediction(MODEL_DIR)
         ml_prediction.load_model()
-    answer = ''    
+    answer = ''
     if request.method == 'POST':
         try:
             data = json.loads(request.data)
@@ -37,14 +37,16 @@ def webhook():
             sender = data['conversation']['id']
             text = data['text']
 
-            bot.send_message(bot_id, bot_name, recipient, service, sender, 
+            bot.send_message(bot_id, bot_name, recipient, service, sender,
                 ml_prediction.response(text, sender))
         except Exception as e:
             print(e)
     if request.method == 'GET':
         question = request.args.get('q')
         answer = ml_prediction.response(question if question else 'Hi')
-    return 'Code: 200. {}'.format(answer)
+        if answer:
+            return answer
+        return 'Sorry, I am not understand what you mean.'
 
 @app.route('/api/train', methods=['GET', 'POST'])
 def train():

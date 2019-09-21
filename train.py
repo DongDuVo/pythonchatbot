@@ -53,7 +53,7 @@ class Train:
 
     def training(self):
         labels, words = self.parse_intents_file()
-        
+
         words = [_stemmer.stem(w.lower()) for w in words if w != "?"]
         words = sorted(list(set(words)))
 
@@ -73,11 +73,11 @@ class Train:
         net = tflearn.fully_connected(net, 8)
         # turn result to probability rather than a number for classification: softmax, relu, sigmoid
         net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
-        
+
         # You have option to tune you training by setting different option e.g learning_rate
         # For example: net = tflearn.regression(net, optimizer='sgd', learning_rate=0.01, loss='mean_square')
         net = tflearn.regression(net)
-        
+
         model = tflearn.DNN(net)
-        model.fit(training, output, n_epoch=200, batch_size=2, show_metric=True)
+        model.fit(training, output, n_epoch=500, batch_size=2, show_metric=True)
         model.save("{}/model.tflearn".format(self.model_dir))
