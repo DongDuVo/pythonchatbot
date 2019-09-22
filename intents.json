@@ -192,6 +192,61 @@
         "She has a husband and a kid"
       ],
       "context_filter": "maile"
+    },
+    {
+      "tag": "medidata",
+      "patterns": ["What is medidata?", "Do you know medidata project?", "medidata logo"],
+      "responses": ["It is the name of a project in BU A+", "This is one of test projects in BU A+", "It is one of BU A Plus's Clients"],
+      "context_set": "medidata"
+    },
+    {
+      "tag": "medidata_office",
+      "patterns": ["What is the medidata customer address?", "Where is the headquarters of medidata located?", "Where is medidata's main office?"],
+      "responses": ["It is 350 Hudson Street, NYC, United States", "The Client is based in US. 350 Hudson Street, New York in particular.", "Medidata is an interesting company. If you're planning to visit its headquarters, you need to have at least $1000 for a round trip air ticket. It's in the same city having the Statue of Liberty and situated on 350 Hudson Street"],
+      "context_set": "medidata",
+      "context_filter": "medidata"
+    },
+    {
+      "tag": "medidata_domain",
+      "patterns": ["What's the medidata's Business/Domain?", "Which industry does medidata work in?", "Which field is medidata about?"],
+      "responses": ["Its domain is about Healthcare", "It provides products and services in Healthcare Industry", "The company is classified in the Healthcare industry"],
+      "context_set": "medidata",
+      "context_filter": "medidata"
+    },
+    {
+      "tag": "medidata_site",
+      "patterns": ["I want to know more information about medidata", "Show me medidata's page", "medidata's business site"],
+      "responses": ["It's easy. You can find anything you want here: https://www.medidata.com/en/", "Follow this link: https://www.medidata.com/en/"],
+      "context_set": "medidata",
+      "context_filter": "medidata"
+    },
+    {
+      "tag": "medidata_start_date",
+      "patterns": ["When was the contract between medidata and KMS signed?", "How long has medidata been our customer?", "What was the first date of medidata?", "When did meditata join KMS?", "When was medidata added as a new logo at KMS?"],
+      "responses": ["It was on Aug 5, 2019", "Since Aug 5 2019"],
+      "context_set": "medidata",
+      "context_filter": "medidata"
+    },
+    {
+      "tag": "medidata_member",
+      "patterns": ["How many members in medidata project?", "Does medidata have many people work for it?", "Tell me the size of medidata team.", "How big is medidata at KMS?"],
+      "responses": ["It is a group of 2 members", "The team size is 2", "Medidata is currently working well with 2 people"],
+      "context_set": "medidata",
+      "context_filter": "medidata"
+    },
+    {
+      "tag": "medidata_location",
+      "patterns": ["What is the location of medidata team?", "Where can I find medidata team?", "How to meet medidata team?"],
+      "responses": ["You can find the medidata working space at 4th floor - TV office", "Do you intend to ask about the medidata's headquarters?  It's 350 Hudson Street, NYC, United States. However, you can find the offshore team here in Ho Chi Minh City, at KMS TV Office - 4th floor.", "Go to 02 Tan Vien. Make sure you have an access badge, or you can get a visitor card at a Reception. Then go straight to an elevator. When you're inside it, press number 4."],
+      "context_set": "medidata",
+      "context_filter": "medidata"
+    },
+    {
+      "tag": "medidata_activity",
+      "patterns": ["What do medidata team like to do?", "Which activities do medidata enjoy together?", "Favorite stuffs medidata do in free time?", "What will they do in their free time?", "What are favorite activities of the team?"],
+      "responses": ["The team'd love going out for drinking and singing.", "They enjoy spending time for drinking, singing as well as exploring new technology"],
+      "context_set": "medidata",
+      "context_filter": "medidata"
     }
   ]
 }
