@@ -30,6 +30,10 @@ def webhook():
     if request.method == 'POST':
         try:
             data = json.loads(request.data)
+
+            challenge = data['challenge']
+            if challenge: return challenge
+
             bot_id = data['recipient']['id']
             bot_name = data['recipient']['name']
             recipient = data['from']
