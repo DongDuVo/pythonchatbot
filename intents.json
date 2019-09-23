@@ -27,7 +27,8 @@
         "See you later, thanks for visiting",
         "Have a nice day",
         "Bye! Come back again soon."
-      ]
+      ],
+      "context_set": ""
     },
     {
       "tag": "thanks",
@@ -95,8 +96,7 @@
       ],
       "responses": [
         "Yes, there are 11 working projects/accounts in BU A+"
-      ],
-      "context_set": ""
+      ]
     },
     {
       "tag": "BU_Manager",
@@ -115,8 +115,7 @@
       ],
       "responses": [
         "Yes, there are 5 Engineering Managers"
-      ],
-      "context_set": ""
+      ]
     },
     {
       "tag": "BU_Head",
@@ -196,7 +195,7 @@
     {
       "tag": "medidata",
       "patterns": ["What is medidata?", "Do you know medidata project?", "medidata logo"],
-      "responses": ["It is the name of a project in BU A+", "This is one of test projects in BU A+", "It is one of BU A Plus's Clients"],
+      "responses": ["It is the name of a test project in BU A+", "This is one of test projects in BU A+", "It is one of BU A Plus's Clients"],
       "context_set": "medidata"
     },
     {
@@ -208,7 +207,7 @@
     },
     {
       "tag": "medidata_domain",
-      "patterns": ["What's the medidata's Business/Domain?", "Which industry does medidata work in?", "Which field is medidata about?"],
+      "patterns": ["What's the medidata's Business/Domain?", "Which industry does medidata work in?", "Which field is medidata about?", "Medidata's business domain?"],
       "responses": ["Its domain is about Healthcare", "It provides products and services in Healthcare Industry", "The company is classified in the Healthcare industry"],
       "context_set": "medidata",
       "context_filter": "medidata"

@@ -94,8 +94,7 @@ class Prediction:
                             if show_details: print ('context:', i['context_set'])
                             context[userID] = i['context_set']
                         # check if this intent is contextual and applies to this user's conversation
-                        if not 'context_filter' in i or \
-                            (userID in context and 'context_filter' in i and i['context_filter'] == context[userID]):
+                        if not 'context_filter' in i or not userID in context or context[userID] == '' or i['context_filter'] == context[userID]:
                             if show_details: print ('tag:', i['tag'])
                             # a random response from the intent
                             return random.choice(i['responses'])
