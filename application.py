@@ -3,7 +3,7 @@ import os
 import json
 from prediction import Prediction
 from train import Train
-from flask import Flask, request
+from flask import Flask, request, Response
 from upload_file import upload_file
 
 app = Flask(__name__, static_url_path='/static')
@@ -32,7 +32,7 @@ def webhook():
             data = json.loads(request.data)
 
             challenge = data['challenge']
-            if challenge: return challenge
+            if challenge: return Response(challenge, headers={'content-type':'text/plain'})
 
             bot_id = data['recipient']['id']
             bot_name = data['recipient']['name']
