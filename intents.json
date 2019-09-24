@@ -260,7 +260,6 @@
         "Which industry does medidata work in?",
         "Which field is medidata about?",
         "Which industry does medidata work in?",
-        "Which field is medidata about?",
         "Medidata's business domain?",
         "What's the medidata's Business/Domain?",
         "What's the medidata project 's Business/Domain?",
@@ -363,7 +362,7 @@
         "Yes, the Business or Domain of the medidata test project belong to Healthcare field.",
         "Its domain is about Healthcare",
         "It provides products and services in Healthcare Industry.",
-        "The company is classified in the Healthcare industry?"
+        "The company is classified in the Healthcare industry"
       ],
       "context_filter": "medidata"
     },
