@@ -46,7 +46,7 @@ def webhook():
         answer = ml_prediction.response(question if question else 'Hi')
         if answer:
             return answer
-        return 'Sorry, I am not understand what you mean.'
+        return 'Sorry, I do not understand what you mean.'
 
 @app.route('/api/train', methods=['GET', 'POST'])
 def train():
