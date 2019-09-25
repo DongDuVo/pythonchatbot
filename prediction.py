@@ -92,7 +92,7 @@ class Prediction:
                         # set context for this intent if necessary
                         if 'context_set' in i:
                             if show_details: print ('context:', i['context_set'])
-                            if i['context_set'] == '': context.pop(userID)
+                            if i['context_set'] == '' and userID in context: context.pop(userID)
                             else: context[userID] = i['context_set']
                         # check if this intent is contextual and applies to this user's conversation
                         if not 'context_filter' in i or not userID in context or i['context_filter'] == context[userID]:
