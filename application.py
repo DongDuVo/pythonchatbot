@@ -45,8 +45,9 @@ def webhook():
         question = request.args.get('q')
         answer = ml_prediction.response(question if question else 'Hi')
         if answer:
+            if answer.endswith('.png'): return app.send_static_file(answer)
             return answer
-        return 'Sorry, I do not understand what you mean.'
+        return app.send_static_file('monkey.gif')
 
 @app.route('/api/train', methods=['GET', 'POST'])
 def train():
