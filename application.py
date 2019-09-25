@@ -37,8 +37,17 @@ def webhook():
             sender = data['conversation']['id']
             text = data['text']
 
-            bot.send_message(bot_id, bot_name, recipient, service, sender,
-                ml_prediction.response(text, sender))
+            answer = ml_prediction.response(text, sender)
+            if answer:
+                if answer.endswith('.png'):
+                    url = request.url_root + app.static_url_path + '/' + answer
+                    bot.send_media(bot_id, bot_name, recipient, service, sender, 'image/png', url)
+                else:
+                    bot.send_message(bot_id, bot_name, recipient, service, sender,
+                        ml_prediction.response(text, sender))
+            else :
+                url = request.url_root + app.static_url_path + '/monkey.gif'
+                bot.send_media(bot_id, bot_name, recipient, service, sender, 'image/gif', url)
         except Exception as e:
             print(e)
     if request.method == 'GET':
