@@ -44,7 +44,7 @@ def webhook():
                     bot.send_media(bot_id, bot_name, recipient, service, sender, 'image/png', url)
                 else:
                     bot.send_message(bot_id, bot_name, recipient, service, sender, answer)
-            else :
+            else:
                 bot.send_message(bot_id, bot_name, recipient, service, sender, 'Sorry, I do not understand.')
                 url = request.url_root + app.static_url_path + '/monkey.gif'
                 bot.send_media(bot_id, bot_name, recipient, service, sender, 'image/gif', url)
@@ -66,7 +66,7 @@ def train():
         except Exception as e:
             return "Error: {}".format(e)
     if request.method == 'GET':
-        input_file = request.args.get('file');
+        input_file = request.args.get('file')
         intents_file = input_file if input_file else "intents.json"
 
     ml = Train(intents_file, MODEL_DIR)
